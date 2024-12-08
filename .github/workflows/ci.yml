@@ -215,21 +215,21 @@ jobs:
         run: python3 ci/check-changed-files.py | bash
 
       - name: Deploy judgels-server
-        # if: steps.changed-files.outputs.judgels-server == '1'
+        if: steps.changed-files.outputs.judgels-server == '1'
         run: |
           eval "$(ssh-agent -s)"
           ssh-add deployment/ansible/env/deployment_rsa
           ./deployment/scripts/deploy_judgels_server.sh
 
       - name: Deploy judgels-client
-        # if: steps.changed-files.outputs.judgels-client == '1'
+        if: steps.changed-files.outputs.judgels-client == '1'
         run: |
           eval "$(ssh-agent -s)"
           ssh-add deployment/ansible/env/deployment_rsa
           ./deployment/scripts/deploy_judgels_client.sh
 
       - name: Deploy judgels-grader
-        # if: steps.changed-files.outputs.judgels-grader == '1'
+        if: steps.changed-files.outputs.judgels-grader == '1'
         run: |
           eval "$(ssh-agent -s)"
           ssh-add deployment/ansible/env/deployment_rsa

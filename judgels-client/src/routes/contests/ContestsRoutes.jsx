@@ -10,14 +10,14 @@ function ContestsRoutes() {
     {
       id: '@',
       titleIcon: <Console />,
-      title: 'Contests',
+      title: 'Соревнования',
       routeComponent: Route,
       component: ContestsPage,
     },
   ];
 
   const contentWithSidebarProps = {
-    title: 'Menu',
+    title: 'Меню',
     items: sidebarItems,
   };
 

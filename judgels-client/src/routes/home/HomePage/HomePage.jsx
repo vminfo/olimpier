@@ -32,11 +32,11 @@ function HomePage({ isLoggedIn }) {
           <div className="home-banner__buttons">
             {isTLX() && (
               <ButtonLink to="/register" intent={Intent.PRIMARY} large className="home-banner__button-register">
-                Register and start training for free
+                Зарегестрируйтесь и начните обучение
               </ButtonLink>
             )}
             <ButtonLink to="/login" intent={Intent.NONE} large className="home-banner__button-login">
-              Log in
+              Войти
             </ButtonLink>
           </div>
         </div>

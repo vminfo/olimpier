@@ -24,7 +24,7 @@ class ActiveContestsWidget extends PureComponent {
         {this.renderActiveContests()}
 
         <small>
-          <Link to={'/contests'}>See all contests...</Link>
+          <Link to={'/contests'}>Посмотреть все конкурсы...</Link>
         </small>
       </Card>
     );
@@ -40,7 +40,7 @@ class ActiveContestsWidget extends PureComponent {
     if (contests.length === 0) {
       return (
         <p>
-          <small>No active contests.</small>
+          <small>Нет активных конкурсов</small>
         </p>
       );
     }

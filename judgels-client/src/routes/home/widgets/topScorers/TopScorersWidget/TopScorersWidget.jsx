@@ -38,7 +38,7 @@ class TopScorersWidget extends Component {
     if (data.page.length === 0) {
       return (
         <div className="top-scorers-widget__empty">
-          <small>No data yet.</small>
+          <small>Пока нет данных</small>
         </div>
       );
     }

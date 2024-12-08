@@ -37,7 +37,7 @@ class TopRatingsWidget extends Component {
     if (profiles.length === 0) {
       return (
         <div className="top-ratings-widget__empty">
-          <small>No data yet.</small>
+          <small>Пока нет данных</small>
         </div>
       );
     }

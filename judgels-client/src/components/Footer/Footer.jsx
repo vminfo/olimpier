@@ -13,7 +13,7 @@ export function Footer() {
       <small className="footer__text">
         <div className="float-left">{HTMLReactParser(footer)}</div>
         <div className="float-right">
-          Powered by olimpier
+          Powered by <a href="https://github.com/vminfo/olimpier">Olimpier</a>
         </div>
         <div className="clearfix" />
       </small>

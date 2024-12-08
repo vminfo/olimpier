@@ -26,7 +26,7 @@ jobs:
         run: python3 ci/check-changed-files.py | bash
 
       - name: Set up JDK
-        # if: steps.changed-files.outputs.gradle == '1'
+        if: steps.changed-files.outputs.gradle == '1'
         uses: actions/setup-java@v4
         with:
           distribution: zulu
@@ -37,42 +37,42 @@ jobs:
         run: chmod +x ./judgels-backends/gradlew
 
       - name: Test judgels-commons
-        # if: steps.changed-files.outputs.judgels-commons == '1'
+        if: steps.changed-files.outputs.judgels-commons == '1'
         run: ./judgels-backends/gradlew -p judgels-backends/judgels-commons check
 
       - name: Test judgels-grader-api
-        # if: steps.changed-files.outputs.judgels-grader == '1'
+        if: steps.changed-files.outputs.judgels-grader == '1'
         run: ./judgels-backends/gradlew -p judgels-backends/judgels-grader-api check
 
       - name: Test judgels-grader-engines
-        # if: steps.changed-files.outputs.judgels-grader == '1'
+        if: steps.changed-files.outputs.judgels-grader == '1'
         run: ./judgels-backends/gradlew -p judgels-backends/judgels-grader-engines check
 
       - name: Test judgels-grader-app
-        # if: steps.changed-files.outputs.judgels-grader == '1'
+        if: steps.changed-files.outputs.judgels-grader == '1'
         run: ./judgels-backends/gradlew -p judgels-backends/judgels-grader-app check
 
       - name: Test judgels-server-api
-        # if: steps.changed-files.outputs.judgels-server == '1'
+        if: steps.changed-files.outputs.judgels-server == '1'
         run: ./judgels-backends/gradlew -p judgels-backends/judgels-server-api check
 
       - name: Test judgels-server-app
-        # if: steps.changed-files.outputs.judgels-server == '1'
+        if: steps.changed-files.outputs.judgels-server == '1'
         run: ./judgels-backends/gradlew -p judgels-backends/judgels-server-app check
 
       - name: Set up node
-        # if: steps.changed-files.outputs.yarn == '1'
+        if: steps.changed-files.outputs.yarn == '1'
         uses: actions/setup-node@v3
         with:
           node-version: "20"
 
       - name: Get yarn cache directory path
-        # if: steps.changed-files.outputs.yarn == '1'
+        if: steps.changed-files.outputs.yarn == '1'
         id: yarn-cache-dir-path
         run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
 
       - name: Use yarn cache
-        # if: steps.changed-files.outputs.yarn == '1'
+        if: steps.changed-files.outputs.yarn == '1'
         uses: actions/cache@v3
         id: yarn-cache
         with:
@@ -82,7 +82,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Test judgels-client
-        # if: steps.changed-files.outputs.judgels-client == '1'
+        if: steps.changed-files.outputs.judgels-client == '1'
         run: |
           cd judgels-client
           export NODE_OPTIONS="--max-old-space-size=4096"
@@ -111,7 +111,7 @@ jobs:
         run: python3 ci/check-changed-files.py | bash
 
       - name: Set up JDK
-        # if: steps.changed-files.outputs.gradle == '1'
+        if: steps.changed-files.outputs.gradle == '1'
         uses: actions/setup-java@v4
         with:
           distribution: zulu
@@ -119,18 +119,18 @@ jobs:
           cache: gradle
 
       - name: Set up node
-        # if: steps.changed-files.outputs.yarn == '1'
+        if: steps.changed-files.outputs.yarn == '1'
         uses: actions/setup-node@v3
         with:
           node-version: "20"
 
       - name: Get yarn cache directory path
-        # if: steps.changed-files.outputs.yarn == '1'
+        if: steps.changed-files.outputs.yarn == '1'
         id: yarn-cache-dir-path
         run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
 
       - name: Use yarn cache
-        # if: steps.changed-files.outputs.yarn == '1'
+        if: steps.changed-files.outputs.yarn == '1'
         uses: actions/cache@v3
         id: yarn-cache
         with:
@@ -140,15 +140,15 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Build judgels-server
-        # if: steps.changed-files.outputs.judgels-server == '1'
+        if: steps.changed-files.outputs.judgels-server == '1'
         run: ./deployment/scripts/build_judgels_server.sh
 
       - name: Build judgels-client
-        # if: steps.changed-files.outputs.judgels-client == '1'
+        if: steps.changed-files.outputs.judgels-client == '1'
         run: ./deployment/scripts/build_judgels_client.sh
 
       - name: Build judgels-grader
-        # if: steps.changed-files.outputs.judgels-grader == '1'
+        if: steps.changed-files.outputs.judgels-grader == '1'
         run: ./deployment/scripts/build_judgels_grader.sh
 
   deploy-web:
@@ -168,33 +168,32 @@ jobs:
         run: python3 ci/check-changed-files.py | bash
 
       - name: Set up node
-        # if: steps.changed-files.outputs.web == '1'
+        if: steps.changed-files.outputs.web == '1'
         uses: actions/setup-node@v3
         with:
           node-version: "20"
 
       - name: Build web
-        # if: steps.changed-files.outputs.web == '1'
+        if: steps.changed-files.outputs.web == '1'
         run: |
           cd web
           yarn install
           yarn build
 
       - name: Install SSH key
-        # if: steps.changed-files.outputs.web == '1'
+        if: steps.changed-files.outputs.web == '1'
         uses: shimataro/ssh-key-action@v2
         with:
           key: ${{ secrets.WEB_PRIVATE_KEY }}
           known_hosts: ${{ secrets.WEB_KNOWN_HOSTS }}
 
       - name: Rsync web
-        # if: steps.changed-files.outputs.web == '1'
+        if: steps.changed-files.outputs.web == '1'
         run: rsync -avzh web/build/ root@${WEB_HOST}:/var/www/html/judgels --delete
 
   deploy-tlx-staging:
     needs: build
-    # if: github.ref == 'refs/heads/master' && github.repository_owner == 'vminfo'
-    if: False
+    if: github.ref == 'refs/heads/master' && github.repository_owner == 'vminfo'
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4

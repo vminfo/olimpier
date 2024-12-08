@@ -4,8 +4,8 @@ import { get, post, put } from '../http';
 import { baseContestURL } from './contest';
 
 export const ContestAnnouncementStatus = {
-  Draft: 'Проект',
-  Published: 'Опубликовано',
+  Draft: 'DRAFT',
+  Published: 'PUBLISHED',
 };
 
 const baseURL = contestJid => `${baseContestURL(contestJid)}/announcements`;

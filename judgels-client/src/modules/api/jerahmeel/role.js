@@ -1,3 +1,3 @@
 export const JerahmeelRole = {
-  Admin: 'Админ',
+  Admin: 'ADMIN',
 };

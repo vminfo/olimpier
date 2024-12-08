@@ -1,4 +1,4 @@
 export const JophielRole = {
-  Admin: 'ADMIN',
-  Superadmin: 'SUPERADMIN',
+  Admin: 'Админ',
+  Superadmin: 'Суперадмин',
 };

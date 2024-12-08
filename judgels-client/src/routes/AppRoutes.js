@@ -25,7 +25,7 @@ const appRoutes = [
   {
     id: 'system',
     icon: <Cog />,
-    title: 'System',
+    title: 'Настроки',
     route: {
       path: '/system',
       component: LazySystemRoutes,
@@ -35,7 +35,7 @@ const appRoutes = [
   {
     id: 'contests',
     icon: <Console />,
-    title: 'Contests',
+    title: 'Соревнования',
     route: {
       path: '/contests',
       component: LazyContestsRoutes,
@@ -45,7 +45,7 @@ const appRoutes = [
   {
     id: 'training',
     icon: <Projects />,
-    title: 'Training',
+    title: 'Тренеровка',
     route: {
       path: '/training',
       component: LazyTrainingRoutes,
@@ -55,7 +55,7 @@ const appRoutes = [
   {
     id: 'courses',
     icon: <PredictiveAnalysis />,
-    title: 'Courses',
+    title: 'Курсы',
     route: {
       path: '/courses',
       component: LazyCoursesRoutes,
@@ -65,7 +65,7 @@ const appRoutes = [
   {
     id: 'problems',
     icon: <Manual />,
-    title: 'Problems',
+    title: 'Задачи',
     route: {
       path: '/problems',
       component: LazyProblemsRoutes,
@@ -75,7 +75,7 @@ const appRoutes = [
   {
     id: 'submissions',
     icon: <Layers />,
-    title: 'Submissions',
+    title: 'Посылки',
     route: {
       path: '/submissions',
       component: LazySubmissionsRoutes,
@@ -85,7 +85,7 @@ const appRoutes = [
   {
     id: 'ranking',
     icon: <TimelineLineChart />,
-    title: 'Ranking',
+    title: 'Рейтинг',
     route: {
       path: '/ranking',
       component: LazyRankingRoutes,
@@ -97,7 +97,7 @@ const appRoutes = [
 const homeRoute = {
   id: 'home',
   icon: <Home />,
-  title: 'Home',
+  title: 'Главная',
   route: {
     component: JophielRoutes,
   },

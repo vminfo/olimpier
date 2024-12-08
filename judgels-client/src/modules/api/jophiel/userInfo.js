@@ -2,8 +2,8 @@ import { get, put } from '../http';
 import { baseUserURL } from './user';
 
 export const userInfoGender = {
-  MALE: 'Male',
-  FEMALE: 'Female',
+  MALE: 'Мужской',
+  FEMALE: 'Женский',
 };
 
 const baseURL = userJid => `${baseUserURL(userJid)}/info`;

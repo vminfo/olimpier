@@ -49,9 +49,9 @@ export class UserWidget extends PureComponent {
   renderForUser = (avatarUrl, profile) => {
     const menuItems = (
       <>
-        <MenuItemLink text="My profile" to={`/profiles/${profile.username}`} />
-        {isTLX() && <MenuItemLink text="My account" to="/account" />}
-        <MenuItemLink text="Log out" to="/logout" />
+        <MenuItemLink text="Мой профиль" to={`/profiles/${profile.username}`} />
+        {isTLX() && <MenuItemLink text="Мой аккаунт" to="/account" />}
+        <MenuItemLink text="Выйти" to="/logout" />
       </>
     );
 
@@ -108,13 +108,13 @@ export class UserWidget extends PureComponent {
       <Navbar.Group align={Alignment.RIGHT}>
         <div className="widget-user__link">
           <Link data-key="login" to="/login">
-            Log in
+            Войти
           </Link>
         </div>
         {isTLX() && (
           <div className="widget-user__link">
             <Link data-key="register" to="/register">
-              Register
+              Зарегистрироваться
             </Link>
           </div>
         )}

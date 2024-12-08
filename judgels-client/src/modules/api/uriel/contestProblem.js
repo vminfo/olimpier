@@ -4,8 +4,8 @@ import { get, put } from '../http';
 import { baseContestURL } from './contest';
 
 export const ContestProblemStatus = {
-  Open: 'OPEN',
-  Closed: 'CLOSED',
+  Open: 'ОТКРЫТО',
+  Closed: 'ЗАКРЫТО',
 };
 
 const baseURL = contestJid => `${baseContestURL(contestJid)}/problems`;

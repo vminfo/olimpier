@@ -1,0 +1,20 @@
+.language-form {
+  display: flex;
+  gap: 5px;
+
+  .language-form__field {
+    width: 210px;
+
+    .form-language {
+      margin-top: 3px;
+      button {
+        width: 210px;
+      }
+    }
+  }
+
+  .language-form__button {
+    margin-top: 10px;
+    height: 30px;
+  }
+}

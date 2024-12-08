@@ -1,0 +1,22 @@
+.problem-report-widget {
+  hr {
+    margin-bottom: 5px !important;
+  }
+
+  h4.progress-title {
+    display: inline;
+  }
+
+  .stats-value {
+    float: right;
+  }
+
+  .stats-table {
+    .col-rank {
+      width: 35px;
+    }
+    .col-value {
+      width: 100px;
+    }
+  }
+}

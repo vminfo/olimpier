@@ -1,0 +1,28 @@
+- hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: Log in to Docker Container Registry
+      include_role:
+        name: docker-login
+    
+    - name: Tag latest judgels client image with the release version
+      docker_image:
+        name: ghcr.io/vminfo/olimpier/client
+        repository: ghcr.io/vminfo/olimpier/client:{{ app_version }}
+        source: pull
+        push: yes
+
+    - name: Tag latest judgels server image with the release version
+      docker_image:
+        name: ghcr.io/vminfo/olimpier/server
+        repository: ghcr.io/vminfo/olimpier/server:{{ app_version }}
+        source: pull
+        push: yes
+
+    - name: Tag latest judgels grader image with the release version
+      docker_image:
+        name: ghcr.io/vminfo/olimpier/grader
+        repository: ghcr.io/vminfo/olimpier/grader:{{ app_version }}
+        source: pull
+        push: yes

@@ -1,0 +1,12 @@
+apply from: '../../gradle/java.gradle'
+
+dependencies {
+    api project(':judgels-commons:judgels-mapper')
+
+    api "com.google.dagger:dagger:$daggerVersion"
+    api "io.dropwizard:dropwizard-core:$dropwizardVersion"
+
+    compileOnly "com.google.dagger:dagger-compiler:$daggerVersion"
+
+    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
+}

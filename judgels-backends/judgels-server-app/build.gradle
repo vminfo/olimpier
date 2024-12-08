@@ -1,0 +1,113 @@
+apply from: '../gradle/java.gradle'
+apply from: '../gradle/integTest.gradle'
+
+apply plugin: 'application'
+
+dependencies {
+    implementation project(':judgels-commons:judgels-fs')
+    implementation project(':judgels-commons:judgels-messaging')
+    implementation project(':judgels-commons:judgels-recaptcha')
+    implementation project(':judgels-commons:judgels-service-core')
+    implementation project(':judgels-grader-api')
+    implementation project(':judgels-grader-engines')
+    implementation project(':judgels-server-api')
+
+    implementation "com.google.dagger:dagger:$daggerVersion"
+    implementation "com.google.api-client:google-api-client:$googleApiClientVersion"
+    implementation "com.google.guava:guava:$guavaVersion"
+    implementation "commons-io:commons-io:2.4"
+    implementation "com.palantir.websecurity:dropwizard-web-security:$dropwizardWebSecurityVersion"
+    implementation "org.apache.commons:commons-email:$apacheCommonsEmailVersion"
+    implementation "org.apache.commons:commons-lang3:$apacheCommonsLang3Version"
+    implementation "org.apache.commons:commons-rng-core:$apacheCommonsRngVersion"
+    implementation "org.apache.commons:commons-rng-simple:$apacheCommonsRngVersion"
+    implementation "org.apache.commons:commons-text:$apacheCommonsTextVersion"
+    implementation "org.eclipse.jgit:org.eclipse.jgit:5.13.0.202109080827-r"
+    implementation ("com.amazonaws:aws-java-sdk-s3:$awsJavaSdkS3Version") {
+        exclude group: "joda-time", module: "joda-time"
+    }
+    implementation "io.dropwizard:dropwizard-assets:$dropwizardVersion"
+    implementation "io.dropwizard:dropwizard-forms:$dropwizardVersion"
+    implementation "io.dropwizard:dropwizard-hibernate:$dropwizardVersion"
+    implementation "io.dropwizard:dropwizard-jersey:$dropwizardVersion"
+    implementation "io.dropwizard:dropwizard-migrations:$dropwizardVersion"
+    implementation "io.dropwizard:dropwizard-views-freemarker:$dropwizardVersion"
+
+    implementation "io.dropwizard-bundles:dropwizard-webjars-bundle:$dropwizardWebJarsBundleVersion"
+    implementation 'javax.inject:javax.inject:1'
+    implementation 'org.webjars:bootstrap:3.3.4'
+    implementation 'org.webjars:jquery:2.1.4'
+    implementation 'org.webjars:ckeditor:4.19.0'
+    implementation 'org.webjars.bower:open-sans:1.1.0'
+    implementation 'org.webjars.bower:roboto-fontface:0.7.0'
+    implementation 'org.webjars.npm:katex:0.16.4'
+
+    runtimeOnly "mysql:mysql-connector-java:$mysqlConnectorJavaVersion"
+
+    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
+    annotationProcessor "org.hibernate:hibernate-jpamodelgen:$hibernateVersion"
+    annotationProcessor "org.immutables:value:$immutablesVersion"
+
+    testImplementation "com.h2database:h2:$h2Version"
+    testImplementation "org.awaitility:awaitility:$awaitilityVersion"
+    testImplementation "org.assertj:assertj-core:$assertJVersion"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion"
+    testImplementation "org.mockito:mockito-core:$mockitoVersion"
+
+    compileOnly "com.google.dagger:dagger-compiler:$daggerVersion"
+    compileOnly "org.hibernate:hibernate-jpamodelgen:$hibernateVersion"
+    compileOnly "org.immutables:value-annotations:$immutablesVersion"
+
+    integTestImplementation project(':judgels-server-feign')
+
+    integTestImplementation "io.dropwizard:dropwizard-testing:$dropwizardVersion"
+    integTestImplementation "javax.ws.rs:javax.ws.rs-api:$jaxRsApiVersion"
+    integTestImplementation "org.subethamail:subethasmtp-wiser:$wiserVersion"
+
+    integTestRuntimeOnly "javax.servlet:javax.servlet-api:$servletApiVersion"
+
+    integTestAnnotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
+    integTestAnnotationProcessor "org.hibernate:hibernate-jpamodelgen:$hibernateVersion"
+    integTestAnnotationProcessor "org.immutables:value:$immutablesVersion"
+}
+
+application {
+    mainClass = 'judgels.JudgelsServerApplication'
+}
+
+run {
+    args = [ 'server', 'var/conf/judgels-server.yml' ]
+}
+
+task dbDump(type: JavaExec, dependsOn: jar) {
+    group 'Database'
+    description 'Dumps current database schema.'
+
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'judgels.JudgelsServerApplication'
+    args = [ 'db', 'dump', 'var/conf/judgels-server.yml' ]
+}
+
+task dbMigrate(type: JavaExec, dependsOn: jar) {
+    group 'Database'
+    description 'Migrates database to the latest version.'
+
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'judgels.JudgelsServerApplication'
+    args = [ 'db', 'migrate', 'var/conf/judgels-server.yml' ]
+}
+
+task dbFastForward(type: JavaExec, dependsOn: jar) {
+    group 'Database'
+    description 'Fast fowards database to the latest version.'
+
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'judgels.JudgelsServerApplication'
+    args = [ 'db', 'fast-forward', '--all', 'var/conf/judgels-server.yml' ]
+}
+
+gradle.projectsEvaluated {
+    tasks.withType(JavaCompile) {
+        options.compilerArgs << "-Xmaxerrs" << "500"
+    }
+}

@@ -1,0 +1,56 @@
+@import '../../../../../../../../styles/base';
+
+.chapter-resources-page {
+  flex: 1 1;
+  max-width: 865px;
+}
+
+.chapter-resources-page__sections {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.chapter-resources-page__resources {
+  .content-card {
+    margin-bottom: 1px;
+
+    &:first-of-type {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    &:not(:first-of-type):not(:last-of-type) {
+      border-radius: 0;
+    }
+
+    &:last-of-type {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+  }
+}
+
+.chapter-resources-page__title {
+  margin-bottom: 15px;
+  font-size: 22px !important;
+  line-height: 24px !important;
+}
+
+.chapter-resources-page__title--link {
+  color: inherit !important;
+
+  &:hover {
+    text-decoration: none;
+    color: $primary-color !important;
+  }
+
+  & .bp5-icon {
+    height: 22px;
+  }
+}
+
+.chapter-resources-page__title--chevron {
+  height: 24px;
+  color: $dark-secondary-background-color !important;
+}

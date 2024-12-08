@@ -1,0 +1,12 @@
+window.conf = {
+  mode: 'TLX',
+  name: 'Judgels',
+  slogan: 'Programming Contest System',
+  apiUrl: 'http://localhost:9101/api/v2',
+  welcomeBanner: {
+    title: '<h1>Welcome to Judgels</h1>',
+    description:
+      '<h2>This is a programming contest system.</h2>',
+  },
+  footer: '© Ikatan Alumni TOKI',
+};

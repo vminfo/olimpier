@@ -1,0 +1,37 @@
+buildscript {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+    }
+}
+
+plugins {
+    id 'idea'
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+
+    group 'judgels'
+    version getGitVersion()
+}
+
+subprojects {
+    configurations.all {
+        it.resolutionStrategy {
+            eachDependency { details ->
+                if (details.requested.group.startsWith('com.fasterxml.jackson')) {
+                    details.useVersion "$jacksonVersion"
+                }
+            }
+        }
+    }
+}
+
+static def getGitVersion() {
+    def proc = "git describe --tags --always --first-parent".execute()
+    proc.waitFor()
+    return proc.text.trim()
+}

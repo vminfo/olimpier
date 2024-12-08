@@ -1,0 +1,26 @@
+.item-short-answer-form {
+  display: flex;
+  gap: 1px;
+
+  .text-input {
+    margin-left: 25px;
+    &.readonly {
+      background-color: rgba(206, 217, 224, 0.5);
+    }
+  }
+
+  .button {
+    flex-shrink: 0 !important;
+  }
+
+  .callout {
+    height: 35px;
+    line-height: 14px;
+    flex-shrink: 0;
+    flex-basis: fit-content;
+
+    .bp5-icon {
+      top: 10px !important;
+    }
+  }
+}

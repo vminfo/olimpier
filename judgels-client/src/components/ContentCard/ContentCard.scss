@@ -1,0 +1,33 @@
+@import '../../styles/variables/colors';
+
+.content-card {
+  padding: 15px;
+  margin-bottom: 10px;
+  overflow: auto;
+
+  h3 {
+    margin-bottom: 5px;
+  }
+}
+
+.bp5-dark .content-card .content-card,
+.bp5-dark .card .content-card {
+  box-shadow: 0 0 0 0.5px $dark-secondary-background-color !important;
+}
+
+.content-card__section {
+  margin-bottom: 15px;
+}
+
+.content-card__header {
+  margin-bottom: 10px;
+
+  button.float-left,
+  .float-left button {
+    margin-bottom: 5px;
+  }
+
+  .bp5-form-group {
+    margin-bottom: 0;
+  }
+}

@@ -1,0 +1,120 @@
+@import '../../../../../styles/base';
+
+.course-chapters-sidebar {
+  flex-grow: 1;
+  max-width: 320px;
+  margin-top: 40px;
+  margin-right: 30px;
+  font-family: $accent-font;
+  background-color: inherit !important;
+  box-shadow: none !important;
+  transition: flex-grow 0.2s ease-in-out;
+
+  .bp5-dark & {
+    border-color: $dark-border-color;
+  }
+
+  hr {
+    margin: 0 !important;
+  }
+
+  &--compact {
+    flex-grow: unset;
+    margin-right: 10px;
+  }
+
+  &__responsive {
+    display: none;
+  }
+}
+
+a.course-chapters-sidebar__item {
+  display: block;
+  padding: 10px;
+  margin-bottom: 1px;
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    color: inherit;
+    background-color: $tertiary-background-color;
+    border-radius: 3px;
+
+    .bp5-dark & {
+      background-color: $dark-tertiary-background-color;
+    }
+
+    .bp5-dark &.course-chapters-sidebar__item--selected {
+      background-color: $dark-secondary-background-color;
+    }
+  }
+
+  &--future {
+    color: #bcc0c2;
+
+    .bp5-dark & {
+      color: #5d6c79;
+    }
+
+    .bp5-tag {
+      background-color: #ced4d8;
+
+      .bp5-dark & {
+        background-color: #5f6d79;
+      }
+    }
+  }
+
+  &--selected {
+    color: inherit;
+    background-color: $tertiary-background-color;
+    border-radius: 3px;
+
+    .bp5-dark & {
+      color: inherit;
+      background-color: $dark-secondary-background-color;
+    }
+  }
+}
+
+.course-chapters-sidebar__title {
+  h4 {
+    display: inline-block;
+  }
+
+  .bp5-icon {
+    margin-right: 10px;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .course-chapters-sidebar {
+    &__full {
+      display: none;
+    }
+
+    &__responsive {
+      display: block;
+      flex: none;
+      width: 100%;
+      max-width: unset;
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .course-chapters-sidebar--wide.course-chapters-sidebar__full {
+    display: block;
+    flex: none;
+    order: 2;
+    width: 100%;
+    max-width: unset;
+    margin-top: 20px;
+  }
+
+  .course-chapters-sidebar--wide.course-chapters-sidebar__responsive {
+    display: none;
+  }
+}

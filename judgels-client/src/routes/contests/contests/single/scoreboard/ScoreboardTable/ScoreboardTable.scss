@@ -1,0 +1,69 @@
+@import '../../../../../../styles/base';
+
+table.scoreboard__content {
+  td,
+  th {
+    text-align: center;
+    border: 1px #dee0e1 solid;
+    vertical-align: middle;
+
+    span.top {
+      display: block;
+      font-weight: bold;
+    }
+  }
+
+  th {
+    color: #3b73ba;
+    font-weight: bold;
+
+    span.bottom {
+      display: block;
+      font-size: 12px;
+    }
+  }
+
+  thead tr {
+    height: 50px;
+  }
+
+  .my-rank,
+  .my-rank td {
+    background-color: #fcf8e3 !important;
+  }
+
+  .rank-cell {
+    width: 20px;
+  }
+
+  .contestant-cell {
+    text-align: left;
+  }
+
+  .problem-cell {
+    width: 50px;
+  }
+
+  td {
+    padding-top: 5px;
+    padding-bottom: 4px;
+  }
+
+  td span.bottom {
+    display: block;
+    font-size: 9px;
+  }
+}
+
+.bp5-dark table.scoreboard__content {
+  .my-rank,
+  .my-rank td {
+    background-color: $dark-gray1 !important;
+  }
+
+  th {
+    span.bottom {
+      color: #a7b6c2 !important;
+    }
+  }
+}

@@ -1,0 +1,26 @@
+@import '../../styles/base';
+
+.content-card.content-card-link {
+  color: inherit !important;
+  display: block;
+  padding: 0;
+  overflow: auto;
+}
+
+.content-card-link:hover {
+  cursor: pointer;
+  text-decoration: none;
+
+  .bp5-light & {
+    background-color: $secondary-background-color;
+  }
+
+  .bp5-dark & {
+    background-color: $dark-secondary-background-color;
+  }
+}
+
+.content-card-link__content {
+  height: 100%;
+  padding: 15px;
+}

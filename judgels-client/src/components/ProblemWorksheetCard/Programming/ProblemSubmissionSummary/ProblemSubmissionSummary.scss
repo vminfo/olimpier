@@ -1,0 +1,39 @@
+.problem-submission-summary {
+  width: 100%;
+  padding: 10px;
+
+  &__evaluation {
+    position: relative;
+
+    button {
+      position: absolute;
+      right: 0;
+    }
+  }
+
+  &__evaluation-result {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    margin-bottom: 10px;
+  }
+
+  &__verdict {
+    display: flex;
+    gap: 10px;
+
+    .bp5-tag {
+      height: 100%;
+    }
+
+    .details-button {
+      height: 100%;
+      margin-left: auto;
+    }
+  }
+
+  .verdict-tag {
+    width: 100%;
+  }
+}

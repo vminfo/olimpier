@@ -1,0 +1,29 @@
+apply from: '../gradle/java.gradle'
+apply from: '../gradle/integTest.gradle'
+
+apply plugin: 'application'
+
+dependencies {
+    implementation project(':judgels-commons:judgels-service-core')
+    implementation project(':judgels-commons:judgels-messaging')
+    implementation project(':judgels-grader-api')
+    implementation project(':judgels-grader-engines')
+
+    implementation "com.google.dagger:dagger:$daggerVersion"
+    implementation "com.google.guava:guava:$guavaVersion"
+    implementation "org.slf4j:slf4j-api:$slf4jVersion"
+
+    compileOnly "com.google.dagger:dagger-compiler:$daggerVersion"
+    compileOnly "org.immutables:value-annotations:$immutablesVersion"
+
+    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
+    annotationProcessor "org.immutables:value:$immutablesVersion"
+}
+
+application {
+    mainClass = 'judgels.JudgelsGraderApplication'
+}
+
+run {
+    args = [ 'server', 'var/conf/judgels-grader.yml' ]
+}

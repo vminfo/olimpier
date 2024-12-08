@@ -1,0 +1,44 @@
+.bundle-problem-statement__name {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 45px;
+}
+
+.bundle-problem-statement__limits {
+  width: 200px;
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 35px;
+
+  td,
+  th {
+    border: 1px #dee0e1 solid;
+    border-top: 0;
+    vertical-align: middle;
+  }
+}
+
+.bundle-problem-statement__text {
+  embed {
+    width: 100%;
+    min-height: 800px;
+  }
+}
+
+.bundle-problem-statement-item {
+  margin-top: 10px;
+}
+
+.bundle-problem-statement-item__statement {
+  display: flex;
+  align-items: baseline;
+  .__item-num {
+    flex-grow: 0;
+    min-width: 20px;
+    margin-right: 5px;
+  }
+  .__item-statement {
+    flex-grow: 1;
+  }
+}

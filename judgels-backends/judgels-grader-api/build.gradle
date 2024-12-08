@@ -1,0 +1,11 @@
+apply from: '../gradle/java.gradle'
+
+dependencies {
+    api project(':judgels-commons:judgels-mapper')
+
+    compileOnly "org.immutables:value-annotations:$immutablesVersion"
+
+    testImplementation "org.assertj:assertj-core:$assertJVersion"
+
+    annotationProcessor "org.immutables:value:$immutablesVersion"
+}

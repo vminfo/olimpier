@@ -1,0 +1,63 @@
+.problem-submission-editor {
+  flex-grow: 1;
+  margin-bottom: 0;
+
+  @media only screen and (max-width: 1024px) {
+    margin-bottom: 1px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100%;
+
+    @media only screen and (max-width: 1024px) {
+      display: none;
+
+      &.show {
+        display: flex;
+      }
+    }
+
+    > .bp5-form-group {
+      margin-bottom: 10px;
+    }
+
+    .editor-header {
+      display: flex;
+      width: 100%;
+      gap: 10px;
+      margin-bottom: 10px;
+
+      .bp5-form-group {
+        margin: 0;
+      }
+
+      .bp5-tag {
+        padding-top: 1px;
+      }
+
+      .reset-button {
+        margin-left: auto;
+      }
+    }
+
+    .editor-buttons {
+      display: flex;
+      width: 100%;
+
+      .editor-navigation {
+        margin-left: auto;
+      }
+    }
+  }
+
+  .responsive-button {
+    display: none;
+
+    @media only screen and (max-width: 1024px) {
+      display: block;
+    }
+  }
+}

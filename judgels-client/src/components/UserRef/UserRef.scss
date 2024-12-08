@@ -1,0 +1,21 @@
+.user-ref__flag-dummy {
+  width: 20px;
+  margin-right: 8px;
+  display: inline-block;
+}
+
+.user-ref__flag {
+  height: 20px !important;
+  vertical-align: middle;
+  margin-right: 8px;
+  margin-bottom: 2px;
+}
+
+.user-ref__username {
+  vertical-align: baseline;
+  text-decoration: none !important;
+}
+
+.user-ref__username:hover {
+  text-decoration: none !important;
+}

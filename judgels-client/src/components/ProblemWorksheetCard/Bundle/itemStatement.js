@@ -7,7 +7,7 @@ export const AnswerState = {
 };
 
 export const StatementButtonText = {
-  Submit: 'Ответить',
-  Cancel: 'Отменить',
-  ClearAnswer: 'Очистить',
+  Submit: 'Confirm answer',
+  Cancel: 'Cancel',
+  ClearAnswer: 'Clear',
 };
